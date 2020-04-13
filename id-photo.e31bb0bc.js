@@ -165,11 +165,18 @@ function onResize() {
   } else {
     document.querySelector('.rotate-phone').style.opacity = '0';
   }
+}
+
+function resetCanvas(e) {
+  e.stopPropagation();
+  canvas.width = 0;
+  canvas.height = 0;
 } // bind events
 
 
 startButton.addEventListener('click', start);
-captureButton.addEventListener('click', capturePhoto); // only way to fix mobile safari window height changes :/
+captureButton.addEventListener('click', capturePhoto);
+canvas.addEventListener('click', resetCanvas); // only way to fix mobile safari window height changes :/
 
 window.addEventListener('resize', onResize);
 onResize();
@@ -201,7 +208,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "192.168.1.31" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35097" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43055" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
